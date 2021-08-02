@@ -51,6 +51,8 @@ class icIoannidisBot extends lhSelfTestingClass {
     
     protected function processCommonMessage() {
         $reply = new lhSimpleMessage();
+        $reply->setBuddy($this->message->buddy());
+        
         $session = new lhDBSession($this->message->buddy(), $this->dbconn, DB_TABLE_PREFIX);
         $session->set('status', 'babbler');
         
@@ -61,7 +63,7 @@ class icIoannidisBot extends lhSelfTestingClass {
         $chatterbox = new lhChatterBox($session, $this->aiml, $this->csml);
         $answer = $chatterbox->process($this->message->text());
         $reply->setText($answer['text']);
-        foreach ($reply->hints() as $hint) {
+        foreach ($answer['hints'] as $hint) {
             $hint_data = explode('|', $hint, 2);
             if (count($hint_data) == 1) {
                 $reply->addHint(new lhSimpleMessageHint($hint_data[0]));
