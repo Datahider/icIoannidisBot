@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+    <category name="Команда /start">
+        <tag>ever</tag>
+        <pattern>/start</pattern>
+        <template>
+            <text>Привет, я тебя знаю</text>
+        </template>
+    </category>
+    <category name="Команда /start для незнакомцев">
+        <tag>noname</tag>
+        <pattern>/start</pattern>
+        <template>
+            <text>Привет, давай знакомиться!</text>
+            <hint>#contact|Отправить контакт</hint>
+        </template>
+    </category>
+</aiml>
