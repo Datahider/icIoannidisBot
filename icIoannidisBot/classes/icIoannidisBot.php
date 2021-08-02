@@ -63,12 +63,14 @@ class icIoannidisBot extends lhSelfTestingClass {
         $chatterbox = new lhChatterBox($session, $this->aiml, $this->csml);
         $answer = $chatterbox->process($this->message->text());
         $reply->setText($answer['text']);
-        foreach ($answer['hints'] as $hint) {
-            $hint_data = explode('|', $hint, 2);
-            if (count($hint_data) == 1) {
-                $reply->addHint(new lhSimpleMessageHint($hint_data[0]));
-            } else {
-                $reply->addHint(new lhSimpleMessageHint($hint_data[1], $hint_data[0]));
+        if ($answer['hints']) {
+            foreach ($answer['hints'] as $hint) {
+                $hint_data = explode('|', $hint, 2);
+                if (count($hint_data) == 1) {
+                    $reply->addHint(new lhSimpleMessageHint($hint_data[0]));
+                } else {
+                    $reply->addHint(new lhSimpleMessageHint($hint_data[1], $hint_data[0]));
+                }
             }
         }
         return $reply;
