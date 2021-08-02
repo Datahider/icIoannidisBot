@@ -22,7 +22,7 @@ require_once __LIB__ . "lhTextConv/lhTextConv.php";
 
 lhSelfTestingClass::$logfile = __DIR__ . '/logfile.log';
 
-require_once 'classes/icIoannidisBot.php';
+require_once 'icIoannidisBot/classes/icIoannidisBot.php';
 require_once 'secrets.php';
 
 
