@@ -7,12 +7,37 @@
             <text>Привет, я тебя знаю</text>
         </template>
     </category>
+    <category name="Команда /error">
+        <tag>ever</tag>
+        <pattern>/error</pattern>
+        <template>
+            <text>Привет, я тебя знаю</text>
+            <command>icTestCommand</command>
+        </template>
+    </category>
     <category name="Команда /start для незнакомцев">
         <tag>noname</tag>
         <pattern>/start</pattern>
         <template>
             <text>Привет, давай знакомиться!</text>
             <hint>#contact|Отправить контакт</hint>
+        </template>
+    </category>
+    <category name="Пришел контакт от незнакомца">
+        <tag>meet</tag>
+        <pattern>meet</pattern>
+        <template>
+            <text>Вы зарегистрированы под именем __name__ с номером телефона __phone__.
+
+Для изменения имени в любой момент введите /name</text>
+        </template>
+    </category>
+    <category name="Получение вложения">
+        <tag>attachment</tag>
+        <tag>anyway</tag>
+        <pattern>/start</pattern>
+        <template>
+            <text>Не знаю, что с этим делать</text>
         </template>
     </category>
 </aiml>
