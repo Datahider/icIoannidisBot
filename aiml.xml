@@ -23,6 +23,15 @@
             <hint>#contact|Отправить контакт</hint>
         </template>
     </category>
+    <category name="Любая фигня для незнакомцев">
+        <tag>noname</tag>
+        <tag>anyway</tag>
+        <pattern></pattern>
+        <template>
+            <text>Привет, давай знакомиться!</text>
+            <hint>#contact|Отправить контакт</hint>
+        </template>
+    </category>
     <category name="Пришел контакт от незнакомца">
         <tag>meet</tag>
         <pattern>meet</pattern>

@@ -69,7 +69,7 @@ class icIoannidisBot extends lhSelfTestingClass {
     protected function setContact($contact) {
         $name = $contact->first_name;
         if (!empty($contact->last_name)) {
-            $name .= " $contact->lastname";
+            $name .= " $contact->last_name";
         }
         $this->session->set('name', $name);
         $this->session->set('phone', $contact->phone_number);
@@ -148,7 +148,7 @@ class icIoannidisBot extends lhSelfTestingClass {
         
         $contact = new lhSimpleMessageAttachment();
         $contact->setName('__CONTACT__');
-        $contact->setData('{"first_name": "Тест", "phone_number": "79262261818"}');
+        $contact->setData('{"first_name": "Тест", "last_name": "Тестович", "phone_number": "79262261818"}');
         
         $service_message = new lhSimpleMessage();
         $service_message->setServiceId('test');
@@ -185,8 +185,9 @@ class icIoannidisBot extends lhSelfTestingClass {
             'processMessage' => [
                 [$service_message, new lhTest(lhTest::FUNC, 'serviceId', 'test')],
                 [$service_message, new lhTest(lhTest::FUNC, 'servicePointer', 'answerCallbackQuery')],
+                [$error_message, new lhTest(lhTest::FIELD, 'text', 'Привет, давай знакомиться!')],
                 [$start_message, new lhTest(lhTest::FIELD, 'text', 'Привет, давай знакомиться!')],
-                [$contact_message, new lhTest(lhTest::FIELD, 'text', "Вы зарегистрированы под именем Тест с номером телефона 79262261818.\n\nДля изменения имени в любой момент введите /name")],
+                [$contact_message, new lhTest(lhTest::FIELD, 'text', "Вы зарегистрированы под именем Тест Тестович с номером телефона 79262261818.\n\nДля изменения имени в любой момент введите /name")],
                 [$start_message, new lhTest(lhTest::FIELD, 'text', 'Привет, я тебя знаю')],
                 [$error_message, new lhTest(lhTest::FIELD, 'text', 'Ошибка выполнения команды. Свяжитесь с администратором.')],
                 [$attachment_message, new lhTest(lhTest::FIELD, 'text', "Не знаю, что с этим делать")],
